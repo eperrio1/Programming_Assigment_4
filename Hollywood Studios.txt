@@ -1,0 +1,7 @@
+Entrance, Hollywood Boulevard
+Hollywood Boulevard, Entrance, Center Stage
+Center Stage, Hollywood Boulevard, Grand Avenue, Animation Courtyard, Sunset Boulevard
+Grand Avenue, Center Stage
+Animation Courtyard, Toy Story Land, Center Stage
+Toy Story Land, Animation Courtyard
+Sunset Boulevard, Center Stage
