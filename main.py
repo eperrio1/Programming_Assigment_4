@@ -6,6 +6,7 @@ def main():
 
     bool = True
     while bool == True:
+        print()
         file = input("Select data file: Magic Kingdom.txt or Hollywood Studios.txt: ")
         while file != "Magic Kingdom.txt" and file != "Hollywood Studios.txt":
             file = input("Select data file: Magic Kingdom.txt or Hollywood Studios.txt: ")
@@ -58,7 +59,6 @@ def map(data_file):
     return connections
 
 
-#TODO: Update so it keeps track of a clear path from start to finish
 
 def bfs(graph):
     start = ''
@@ -73,7 +73,8 @@ def bfs(graph):
             print("Sorry, that location is not in the graph, please input a new ending point. ")
             end = input("Where should the search END?: ").lower()
 
-
+    # queue need to be a queue of paths
+    # pop a patical path
 
     # list of nodes we've seen
     seen = []
@@ -81,42 +82,55 @@ def bfs(graph):
     # creates queue with the starting node
     queue = deque([start])
 
+    if start == end:
+        seen.append(start)
+        return start
+
 
     # Currently just checking that we are viewing all the nodes in the path
     while queue:
+        # print(f"The current queue: {queue}\n")
         # display the queue
         # gets the first element in the queue
         node = queue.popleft()
-        print(f'The current node: {node}')
-
-
+        # print(f'The current node: {node}')
 
         # if you reached the end, ends the while loop
-        if node == end:
-            seen.append(node)
+        # if node == end:
+        #     seen.append(node)
+        #     return seen
+
+        if start == end:
+            seen.append(start)
             return seen
-
-
 
         # node not in the seen list, append the node
         if node not in seen:
             seen.append(node)
-            print(f'The current seen: {seen}')
+            # print(f'The current seen: {seen}')
 
-
-
+        # print(f'The link attached to the current node: {graph[node]}')
         # loop through for the specific node
         for link in graph[node]:
-            #print(f'The node attached to the current node: {graph[node]}')
-            #print()
+            # print(f'The links connected to the current node: {link}')
 
-            #if the elements in that current node is not in seen, append it to the queue
-            if link not in seen:
+
+            # move all the link to the queue
+            if link not in seen and link != end:
                 queue.append(link)
-                #print(f"The current queue: {queue}\n")
+                # print(f"___________The current queue: {queue}\n")
+                # print("                                            ")
+
+
+
+            if link == end:
+                seen.append(link)
+
+                return seen
 
 
     return f'A path does not exist'
+#
 
 
 
