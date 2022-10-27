@@ -1,9 +1,6 @@
 from collections import deque
 
 def main():
-    print('\n\n========  Breadth-First Search  ========\n\n')
-
-
     bool = True
     while bool == True:
         print()
